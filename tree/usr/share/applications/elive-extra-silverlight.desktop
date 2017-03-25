@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Install Silverlight
+Comment=Silverlight Browser Plugin
+Exec=elive-extra-silverlight
+TryExec=elive-extra-silverlight
+Icon=silverlight
+Terminal=false
+Type=Application
+Categories=Elive;Installer;
+StartupNotify=true
