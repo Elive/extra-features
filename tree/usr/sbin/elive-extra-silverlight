@@ -52,12 +52,13 @@ fi
 echo
 
 # do not ask for something already asked
-sed -i 's|^ACCEPTALL=0|ACCEPTALL=1|g' /usr/bin/pipelight-plugin
+#sed -i 's|^ACCEPTALL=0|ACCEPTALL=1|g' /usr/bin/pipelight-plugin
 
-pipelight-plugin --update
+pipelight-plugin --accept --update
 
 
-pipelight-plugin --enable silverlight
+pipelight-plugin --accept --enable silverlight
+pipelight-plugin --accept --create-mozilla-plugins
 
 
 echo ; echo ; echo ; echo 'All Done' ; sleep 2
