@@ -1,0 +1,76 @@
+#!/bin/bash
+source /usr/lib/elive-tools/functions
+el_make_environment
+. gettext.sh
+TEXTDOMAIN="extrafeatures"
+export TEXTDOMAIN
+
+
+main(){
+    # pre {{{
+    local select
+
+    guitool="/usr/bin/zenity --window-icon=/usr/share/icons/Elive/scalable/apps/logo-elive.png"
+
+    # Usage
+    if [[ "$UID" != 0 ]] ;then
+        #echo -e "Usage: $(basename $BASH_SOURCE) "
+        el_error "root privileges required"
+        exit 1
+    fi
+
+
+
+
+    # }}}
+
+    if ! $guitool --question --text="$( eval_gettext "You are going to install the Microsoft Silverlight plugin for your browser which some few websites requires it, continue?" )" ; then
+        exit
+    fi
+
+    $guitool --info --text="$( eval_gettext "This plugin only works with the Iceweasel browser, also called firefox, do not try to use it with another browser like chrome." )"
+    #$guitool --info --text="$( eval_gettext "Important: During the installation it will appear a license that you need to accept, just press the key Y to continue." )"
+
+
+    depends="pipeline-multi iceweasel"
+
+    urxvt -T 'Installing Packages' -e bash -c "
+source /usr/lib/elive-tools/functions
+el_aptget_update
+apt-get -f install
+echo
+echo
+
+if ! apt-get install -y $depends ; then
+    el_aptget_update force
+    if ! apt-get install -y $depends ; then
+        apt-get -f install
+        el_aptget_update force
+        apt-get install $depends
+    fi
+fi
+echo
+
+# do not ask for something already asked
+sed -i 's|^ACCEPTALL=0|ACCEPTALL=1|g' /usr/bin/pipelight-plugin
+
+pipelight-plugin --update
+
+
+pipelight-plugin --enable silverlight
+
+
+echo ; echo ; echo ; echo 'All Done' ; sleep 2
+"
+
+
+
+
+}
+
+#
+#  MAIN
+#
+main "$@"
+
+# vim: set foldmethod=marker :
