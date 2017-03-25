@@ -63,6 +63,7 @@ pipelight-plugin --enable silverlight
 echo ; echo ; echo ; echo 'All Done' ; sleep 2
 "
 
+    $guitool --info --text="$( eval_gettext "Now you can launch Iceweasel to complete the installation of Silverlight" )"
 
 
 
