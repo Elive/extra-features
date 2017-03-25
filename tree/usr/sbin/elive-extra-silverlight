@@ -2,7 +2,7 @@
 source /usr/lib/elive-tools/functions
 el_make_environment
 . gettext.sh
-TEXTDOMAIN="extrafeatures"
+TEXTDOMAIN="elive-extra-features"
 export TEXTDOMAIN
 
 
