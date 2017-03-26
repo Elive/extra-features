@@ -43,12 +43,13 @@ main(){
 
 
             # activate netflix too
-            if $guitool --question --text="$( eval_gettext "Do you want to enable special support for Netflix?" )" ; then
-                $guitool --info --text="$( eval_gettext "Seems like Netflix doesn't like Linux, so to make it accept your connection you need to fake your identity, making it think that you are not in Linux but in Windows instead. We can do this with a simple addon for Firefox." )"
+            if $guitool --question --text="$( eval_gettext "Do you want to enable extra support for Netflix?" )" ; then
+                $guitool --info --text="$( eval_gettext "Seems like Netflix doesn't like Linux, so to make it to accept your connection you need to fake your identity, making it think that you are not in Linux but in Windows instead. We can do this with a simple addon for Firefox." )"
 
                 $guitool --info --text="$( eval_gettext "After to install the addon, select a Windows alternative from the top-right bar plugin selector. Like Firefox under Windows." )"
 
-                iceweasel "http://www.google.com/search?q=%22user+agent+overrider%22+firefox+addon"
+                #iceweasel "http://www.google.com/search?q=%22user+agent+overrider%22+firefox+addon"
+                iceweasel "https://addons.mozilla.org/es/firefox/addon/user-agent-overrider/versions/?page=1#version-0.2.5.1-signed"
             fi
 
 
