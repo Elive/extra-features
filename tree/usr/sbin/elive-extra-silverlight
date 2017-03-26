@@ -31,17 +31,17 @@ main(){
 set -e
 source /usr/lib/elive-tools/functions
 el_aptget_update
-apt-get-wait -f install
+apt-get -f install
 echo
 echo
 
-if ! apt-get-wait install -y $depends 2>/dev/null ; then
+if ! apt-get install -y $depends 2>/dev/null ; then
     el_aptget_update force
-    if ! apt-get-wait install -y $depends ; then
-        apt-get-wait -f install
+    if ! apt-get install -y $depends ; then
+        apt-get -f install
 
         el_aptget_update force
-        apt-get-wait install $depends
+        apt-get install $depends
     fi
 fi
 echo
