@@ -8,7 +8,7 @@ export TEXTDOMAIN
 
 main(){
     # pre {{{
-    local select
+    local ret depends
 
     guitool="/usr/bin/zenity --window-icon=/usr/share/icons/Elive/scalable/apps/logo-elive.png"
 
@@ -28,19 +28,20 @@ main(){
     depends="pipeline-multi iceweasel"
 
     urxvt -T 'Installing Packages' -e bash -c "
+set -e
 source /usr/lib/elive-tools/functions
 el_aptget_update
-apt-get -f install
+apt-get-wait -f install
 echo
 echo
 
-if ! apt-get install -y $depends 2>/dev/null ; then
+if ! apt-get-wait install -y $depends 2>/dev/null ; then
     el_aptget_update force
-    if ! apt-get install -y $depends ; then
-        apt-get -f install
+    if ! apt-get-wait install -y $depends ; then
+        apt-get-wait -f install
 
         el_aptget_update force
-        apt-get install $depends
+        apt-get-wait install $depends
     fi
 fi
 echo
@@ -57,9 +58,9 @@ pipelight-plugin --accept --create-mozilla-plugins
 
 echo ; echo ; echo ; echo 'All Done' ; sleep 2
 "
+    ret="$?"
 
-    true
-    exit 0
+    exit "$ret"
 
 }
 
