@@ -28,9 +28,8 @@ main(){
 
             $guitool --info --text="$( eval_gettext "Now I'm going to launch Iceweasel to complete the installation." )"
 
-            #iceweasel about:plugins
-            iceweasel &
-            sleep 20
+            iceweasel about:plugins &
+            sleep 40
 
             while [[ -n "$( ps ux | grep -v grep | grep "opt/wine-staging" )" ]] ; do sleep 2 ; done
             sleep 4
@@ -42,10 +41,10 @@ main(){
             iceweasel about:plugins &
             sleep 4
 
-
-            sleep 30
-
             wait
+
+            sleep 20
+
             el_request_donation
         else
             $guitool --error --text="$( eval_gettext "There was a problem installing Silverlight, we are unable to complete it." )"
