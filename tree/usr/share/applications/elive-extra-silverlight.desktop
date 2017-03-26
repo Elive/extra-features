@@ -2,8 +2,7 @@
 Encoding=UTF-8
 Name=Install Silverlight
 Comment=Silverlight Browser Plugin
-Exec=gksu elive-extra-silverlight
-TryExec=/usr/sbin/elive-extra-silverlight
+Exec=silverlight-installer
 Icon=silverlight
 Terminal=false
 Type=Application

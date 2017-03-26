@@ -24,13 +24,6 @@ main(){
 
     # }}}
 
-    if ! $guitool --question --text="$( eval_gettext "You are going to install the Microsoft Silverlight plugin for your browser which some few websites requires it, continue?" )" ; then
-        exit
-    fi
-
-    $guitool --info --text="$( eval_gettext "This plugin only works with the Iceweasel browser, also called firefox, do not try to use it with another browser like chrome." )"
-    #$guitool --info --text="$( eval_gettext "Important: During the installation it will appear a license that you need to accept, just press the key Y to continue." )"
-
 
     depends="pipeline-multi iceweasel"
 
@@ -64,9 +57,8 @@ pipelight-plugin --accept --create-mozilla-plugins
 echo ; echo ; echo ; echo 'All Done' ; sleep 2
 "
 
-    $guitool --info --text="$( eval_gettext "Now you can launch Iceweasel to complete the installation of Silverlight" )"
-
-
+    true
+    exit 0
 
 }
 

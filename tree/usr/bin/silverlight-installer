@@ -1,0 +1,43 @@
+#!/bin/bash
+source /usr/lib/elive-tools/functions
+el_make_environment
+. gettext.sh
+TEXTDOMAIN="elive-extra-features"
+export TEXTDOMAIN
+
+
+main(){
+    # pre {{{
+    local select
+
+    guitool="/usr/bin/zenity --window-icon=/usr/share/icons/Elive/scalable/apps/logo-elive.png"
+
+
+    # }}}
+
+    if $guitool --question --text="$( eval_gettext "You are going to install the Microsoft Silverlight plugin for your browser which some few websites requires it, continue?" )" ; then
+
+        # cleanups
+        rm -rf "$HOME/.wine-pipelight"
+
+        $guitool --info --text="$( eval_gettext "This plugin only works with the Iceweasel browser, also called firefox, do not try to use it with another browser like chrome." )"
+
+        if gksu elive-extra-silverlight ; then
+            # launch iceweasel to complete install
+            pipelight-plugin --accept --enable silverlight
+
+            $guitool --info --text="$( eval_gettext "Now I'm going to launch Iceweasel to complete the installation." )"
+
+            iceweasel about:plugins
+        fi
+    fi
+
+
+}
+
+#
+#  MAIN
+#
+main "$@"
+
+# vim: set foldmethod=marker :
