@@ -27,7 +27,7 @@ main(){
 
     depends="pipelight-multi iceweasel"
 
-    urxvt -T 'Installing Packages' -e bash -c "
+    urxvt -T 'Installing Dependencies' -e bash -c "
 set -e
 source /usr/lib/elive-tools/functions
 el_aptget_update
@@ -54,6 +54,7 @@ pipelight-plugin --accept --update
 
 pipelight-plugin --accept --enable silverlight
 pipelight-plugin --accept --create-mozilla-plugins
+pipelight-plugin --accept --enable silverlight
 
 touch /tmp/silverlight-flag
 
@@ -63,13 +64,11 @@ echo ; echo ; echo ; echo 'All Done' ; sleep 2
 
     if [[ -e "/tmp/silverlight-flag" ]] ; then
         rm -f /tmp/silverlight-flag
+        exit 0
     else
         # failed status if we don't have the flag
-        ret="1"
+        exit 1
     fi
-
-    exit "$ret"
-
 }
 
 #

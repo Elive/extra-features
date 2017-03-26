@@ -28,7 +28,20 @@ main(){
 
             $guitool --info --text="$( eval_gettext "Now I'm going to launch Iceweasel to complete the installation." )"
 
-            iceweasel about:plugins
+            #iceweasel about:plugins
+            iceweasel &
+            sleep 10
+
+            while [[ -n "$( ps ux | grep -v grep | grep "opt/wine-staging" )" ]] ; do sleep 2 ; done
+            sleep 4
+            while [[ -n "$( ps ux | grep -v grep | grep "opt/wine-staging" )" ]] ; do sleep 2 ; done
+
+            killall iceweasel
+
+            gksu "pipelight-plugin --accept --create-mozilla-plugins"
+            iceweasel about:plugins &
+            sleep 4
+
 
             sleep 30
 
