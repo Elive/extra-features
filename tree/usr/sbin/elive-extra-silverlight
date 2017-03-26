@@ -25,7 +25,7 @@ main(){
     # }}}
 
 
-    depends="pipeline-multi iceweasel"
+    depends="pipelight-multi iceweasel"
 
     urxvt -T 'Installing Packages' -e bash -c "
 set -e
