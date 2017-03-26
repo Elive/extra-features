@@ -54,7 +54,6 @@ pipelight-plugin --accept --update
 
 pipelight-plugin --accept --enable silverlight
 pipelight-plugin --accept --create-mozilla-plugins
-pipelight-plugin --accept --enable silverlight
 
 touch /tmp/silverlight-flag
 
