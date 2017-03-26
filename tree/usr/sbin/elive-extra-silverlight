@@ -34,10 +34,11 @@ apt-get -f install
 echo
 echo
 
-if ! apt-get install -y $depends ; then
+if ! apt-get install -y $depends 2>/dev/null ; then
     el_aptget_update force
     if ! apt-get install -y $depends ; then
         apt-get -f install
+
         el_aptget_update force
         apt-get install $depends
     fi
