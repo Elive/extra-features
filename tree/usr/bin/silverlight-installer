@@ -33,6 +33,8 @@ main(){
             sleep 30
 
             el_request_donation
+        else
+            $guitool --error --text="$( eval_gettext "There was a problem installing Silverlight, we are unable to complete it." )"
         fi
     fi
 

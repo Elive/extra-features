@@ -55,10 +55,18 @@ pipelight-plugin --accept --update
 pipelight-plugin --accept --enable silverlight
 pipelight-plugin --accept --create-mozilla-plugins
 
+touch /tmp/silverlight-flag
+
 
 echo ; echo ; echo ; echo 'All Done' ; sleep 2
 "
-    ret="$?"
+
+    if [[ -e "/tmp/silverlight-flag" ]] ; then
+        rm -f /tmp/silverlight-flag
+    else
+        # failed status if we don't have the flag
+        ret="1"
+    fi
 
     exit "$ret"
 
