@@ -39,10 +39,20 @@ main(){
 
             gksu "pipelight-plugin --accept --create-mozilla-plugins"
             iceweasel about:plugins &
-            sleep 4
+            sleep 6
+
+
+            # activate netflix too
+            if $guitool --question --text="$( eval_gettext "Do you want to enable special support for Netflix?" )" ; then
+                $guitool --info --text="$( eval_gettext "Seems like Netflix doesn't like Linux, so to make it accept your connection you need to fake your identity, making it think that you are not in Linux but in Windows instead. We can do this with a simple addon for Firefox." )"
+
+                $guitool --info --text="$( eval_gettext "After to install the addon, select a Windows alternative from the top-right bar plugin selector. Like Firefox under Windows." )"
+
+                iceweasel "http://www.google.com/search?q=%22user+agent+overrider%22+firefox+addon"
+            fi
+
 
             wait
-
             sleep 20
 
             el_request_donation
