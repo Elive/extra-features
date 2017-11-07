@@ -25,7 +25,7 @@ main(){
     # }}}
 
 
-    depends="pipelight-multi iceweasel"
+    depends="pipelight-multi firefox-esr"
 
     urxvt -T 'Installing Dependencies' -e bash -c "
 set -e

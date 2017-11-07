@@ -20,36 +20,43 @@ main(){
         # cleanups
         rm -rf "$HOME/.wine-pipelight"
 
-        $guitool --info --text="$( eval_gettext "This plugin only works with the Iceweasel browser, also called Firefox, do not try to use it with another browser like Chrome." )"
+        $guitool --info --text="$( eval_gettext "This plugin only works with the Firefox browser, also called Firefox, do not try to use it with another browser like Chrome." )"
 
         if gksu elive-extra-silverlight ; then
             # launch iceweasel to complete install
             #pipelight-plugin --accept --enable silverlight
 
-            $guitool --info --text="$( eval_gettext "Now I'm going to launch Iceweasel to complete the installation." )"
+            $guitool --info --text="$( eval_gettext "Now I'm going to launch Firefox to complete the installation." )"
 
-            iceweasel about:plugins &
+            firefox about:plugins &
             sleep 40
 
             while [[ -n "$( ps ux | grep -v grep | grep "opt/wine-staging" )" ]] ; do sleep 2 ; done
             sleep 4
             while [[ -n "$( ps ux | grep -v grep | grep "opt/wine-staging" )" ]] ; do sleep 2 ; done
 
-            killall iceweasel
+            killall firefox-esr
 
             gksu "pipelight-plugin --accept --create-mozilla-plugins"
-            iceweasel about:plugins &
+            firefox about:plugins &
             sleep 6
 
 
             # activate netflix too
             if $guitool --question --text="$( eval_gettext "Do you want to enable extra support for Netflix?" )" ; then
+
                 $guitool --info --text="$( eval_gettext "Seems like Netflix doesn't like Linux, so to make it to accept your connection you need to fake your identity, making it think that you are not in Linux but in Windows instead. We can do this with a simple addon for Firefox." )"
 
                 $guitool --info --text="$( eval_gettext "After to install the addon, select a Windows alternative from the top-right bar plugin selector. Like Firefox under Windows." )"
 
                 #iceweasel "http://www.google.com/search?q=%22user+agent+overrider%22+firefox+addon"
-                iceweasel "https://addons.mozilla.org/es/firefox/addon/user-agent-overrider/versions/?page=1#version-0.2.5.1-signed"
+                #firefox "https://addons.mozilla.org/es/firefox/addon/user-agent-overrider/versions/?page=1#version-0.2.5.1-signed"
+                firefox "https://addons.mozilla.org/es/firefox/addon/user-agent-overrider/versions/?page=1#version-0.5.2-signed" &
+                sleep 3
+                firefox "https://addons.mozilla.org/es/firefox/addon/user-agent-overrider"
+
+                $guitool --info --text="$( eval_gettext "Congratulations! You are ready to use Netflix in Elive." )"
+                $guitool --info --text="$( eval_gettext "Note: if you have problems with the detection of your browser, add this user-agent to your user-agent-overrider plugin:" ) Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"
             fi
 
 
