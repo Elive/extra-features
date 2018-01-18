@@ -1,4 +1,4 @@
 #!/bin/bash
 #source /usr/lib/elive-tools/functions
 
-evince "/usr/share/elive-help/hotkeys/en/hotkeys.pdf"
+evince -w "/usr/share/elive-help/hotkeys/en/hotkeys.pdf"
