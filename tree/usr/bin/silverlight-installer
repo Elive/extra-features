@@ -35,10 +35,12 @@ main(){
     # }}}
 
     if ((is_buster)) ; then
+        # it simply works from google-chrome
+        # note: chromium includes the plugin needed but it doesn't works (same version of the plugin enabled)
         if [[ -x "$(which google-chrome)" ]] ; then
-            $guitool --info --text="$( eval_gettext "Netflix works correctly with the Chrome browser on this version of Elive" )"
+            $guitool --info --text="$( eval_gettext "To watch Netflix on this version of Elive you need to use the Chrome browser." )"
         else
-            if $guitool --question --text="$( eval_gettext "Netflix works correctly with the Chrome browser on this version of Elive. Do you want to install it?" )" ; then
+            if $guitool --question --text="$( eval_gettext "To watch Netflix on this version of Elive you need to use the Chrome browser.. Do you want to install it?" )" ; then
                 el_dependencies_install "google-chrome"
             fi
         fi
