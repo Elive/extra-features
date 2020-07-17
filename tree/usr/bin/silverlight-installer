@@ -38,9 +38,9 @@ main(){
         # it simply works from google-chrome
         # note: chromium includes the plugin needed but it doesn't works (same version of the plugin enabled)
         if [[ -x "$(which google-chrome)" ]] ; then
-            $guitool --info --text="$( eval_gettext "To watch Netflix on this version of Elive you need to use the Chrome browser." )"
+            $guitool --info --text="$( eval_gettext "To watch Netflix on this version of Elive you need to use the official Google Chrome browser." )"
         else
-            if $guitool --question --text="$( eval_gettext "To watch Netflix on this version of Elive you need to use the Chrome browser.. Do you want to install it?" )" ; then
+            if $guitool --question --text="$( eval_gettext "To watch Netflix on this version of Elive you need to use the official Google Chrome browser. Do you want to install it now?" )" ; then
                 el_dependencies_install "google-chrome"
             fi
         fi
@@ -51,12 +51,12 @@ main(){
 
 
     if ((is_wheezy)) ; then
-        if $guitool --question --text="$( eval_gettext "You are going to install the Microsoft Silverlight plugin for your browser which some few websites requires it, continue?" )" ; then
+        if $guitool --question --text="$( eval_gettext "Going to install the Microsoft Silverlight plugin for your browser which some few websites requires it. Do you want to continue?" )" ; then
 
             # cleanups
             rm -rf "$HOME/.wine-pipelight"
 
-            $guitool --info --text="$( eval_gettext "This plugin only works with the Firefox browser, also called Firefox, do not try to use it with another browser like Chrome." )"
+            $guitool --info --text="$( eval_gettext "This plugin only works with the Firefox browser, do not try to use it with another browser like Chrome." )"
 
             if gksu elive-extra-silverlight ; then
                 # launch iceweasel to complete install
@@ -79,11 +79,11 @@ main(){
 
 
                 # activate netflix too
-                if $guitool --question --text="$( eval_gettext "Do you want to enable extra support for Netflix?" )" ; then
+                if $guitool --question --text="$( eval_gettext "Do you want to enable the extra support for Netflix?" )" ; then
 
-                    $guitool --info --text="$( eval_gettext "Seems like Netflix doesn't like Linux, so to make it to accept your connection you need to fake your identity, making it think that you are not in Linux but in Windows instead. We can do this with a simple addon for Firefox." )"
+                    $guitool --info --text="$( eval_gettext "Seems like Netflix doesn't like Linux, so to make it to accept your connection you need to fake your identity, making it believe that you are not in Linux but in Windows instead. We can do this easily with a web addon for Firefox." )"
 
-                    $guitool --info --text="$( eval_gettext "After to install the addon, select a Windows alternative from the top-right bar plugin selector. Like Firefox under Windows." )"
+                    $guitool --info --text="$( eval_gettext "After to install the addon, select a MS Windows alternative from the top-right bar plugin selector. Like Firefox under MS Windows." )"
 
                     #iceweasel "http://www.google.com/search?q=%22user+agent+overrider%22+firefox+addon"
                     #firefox "https://addons.mozilla.org/es/firefox/addon/user-agent-overrider/versions/?page=1#version-0.2.5.1-signed"
@@ -92,7 +92,7 @@ main(){
                     firefox "https://addons.mozilla.org/es/firefox/addon/user-agent-overrider"
 
                     $guitool --info --text="$( eval_gettext "Congratulations! You are ready to use Netflix in Elive." )"
-                    $guitool --info --text="$( eval_gettext "Note: if you have problems with the detection of your browser, add this user-agent to your user-agent-overrider plugin:" ) Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"
+                    $guitool --info --text="$( eval_gettext "Note: if you have problems with the detection of your web browser, add this User-Agent to your plugin of User-Agent-Overrider:" ) Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"
                 fi
 
 
@@ -101,7 +101,7 @@ main(){
 
                 el_request_donation
             else
-                $guitool --error --text="$( eval_gettext "There was a problem installing Silverlight, we are unable to complete it." )"
+                $guitool --error --text="$( eval_gettext "There was a problem installing Silverlight, we are unable to complete the installation." )"
             fi
         fi
     fi
