@@ -62,7 +62,7 @@ main(){
                 # launch iceweasel to complete install
                 #pipelight-plugin --accept --enable silverlight
 
-                $guitool --info --text="$( eval_gettext "Now I'm going to launch Firefox to complete the installation." )"
+                $guitool --info --text="$( eval_gettext "Now launching Firefox to complete the installation." )"
 
                 firefox about:plugins &
                 sleep 40
@@ -81,9 +81,9 @@ main(){
                 # activate netflix too
                 if $guitool --question --text="$( eval_gettext "Do you want to enable the extra support for Netflix?" )" ; then
 
-                    $guitool --info --text="$( eval_gettext "Seems like Netflix doesn't like Linux, so to make it to accept your connection you need to fake your identity, making it believe that you are not in Linux but in Windows instead. We can do this easily with a web addon for Firefox." )"
+                    $guitool --info --text="$( eval_gettext "Seems like Netflix doesn't like Linux, so to make it to accept your connection you need to fake your identity, making it believe that you are not in Linux but in Windows instead. We can do this easily with an extension for Firefox." )"
 
-                    $guitool --info --text="$( eval_gettext "After to install the addon, select a MS Windows alternative from the top-right bar plugin selector. Like Firefox under MS Windows." )"
+                    $guitool --info --text="$( eval_gettext "After installing the addon, select an Microsoft Windows alternative from the top-right bar plugin selector. Like Firefox under MS Windows." )"
 
                     #iceweasel "http://www.google.com/search?q=%22user+agent+overrider%22+firefox+addon"
                     #firefox "https://addons.mozilla.org/es/firefox/addon/user-agent-overrider/versions/?page=1#version-0.2.5.1-signed"
