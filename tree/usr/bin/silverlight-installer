@@ -81,7 +81,7 @@ main(){
                 # activate netflix too
                 if $guitool --question --text="$( eval_gettext "Do you want to enable the extra support for Netflix?" )" ; then
 
-                    $guitool --info --text="$( eval_gettext "Seems like Netflix doesn't like Linux, so to make it to accept your connection you need to change your \"user-agent\", making it believe that you are not in Linux but in Windows instead. We can do this with an extension for Firefox. Don't worry - it's perfectly safe and legal." )"
+                    $guitool --info --text="$( eval_gettext "Seems like Netflix doesn't like Linux, so to make it to accept your connection you need to change your \"user-agent\", making it believe that you are not in Linux but on Windows instead. We can do this through an extension for Firefox. Don't worry - it's perfectly safe and legal." )"
 
                     $guitool --info --text="$( eval_gettext "After installing the addon, select a Microsoft Windows user agent from the top-right bar plugin selector. For example, Firefox under Microsoft Windows." )"
 
@@ -91,7 +91,7 @@ main(){
                     sleep 3
                     firefox "https://addons.mozilla.org/es/firefox/addon/user-agent-overrider"
 
-                    $guitool --info --text="$( eval_gettext "Congratulations! You are ready to use Netflix in Elive." )"
+                    $guitool --info --text="$( eval_gettext "Congratulations! You are ready to use Netflix on Elive." )"
                     $guitool --info --text="$( eval_gettext "Note: if you have problems with the detection of your web browser, add this User-Agent to your plugin of User-Agent-Overrider:" ) Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"
                 fi
 
