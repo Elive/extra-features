@@ -56,7 +56,7 @@ main(){
             # cleanups
             rm -rf "$HOME/.wine-pipelight"
 
-            $guitool --info --text="$( eval_gettext "This plugin only works with the Firefox browser, do not try to use it with another browser like Chrome." )"
+            $guitool --info --text="$( eval_gettext "This plugin only works with the Firefox browser. It will not work with another browser like Chrome." )"
 
             if gksu elive-extra-silverlight ; then
                 # launch iceweasel to complete install
