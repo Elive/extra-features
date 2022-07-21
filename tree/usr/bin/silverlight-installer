@@ -15,9 +15,6 @@ main(){
     guitool="/usr/bin/zenity --window-icon=/usr/share/icons/Elive/scalable/apps/logo-elive.png"
 
     case "$( cat /etc/debian_version )" in
-        10.*|"buster"*)
-            is_buster=1
-            ;;
         7.*|"wheezy"*)
             is_wheezy=1
             ;;
@@ -34,7 +31,7 @@ main(){
 
     # }}}
 
-    if ((is_buster)) ; then
+    if ! ((is_wheezy)) ; then
         # it simply works from google-chrome
         # note: chromium includes the plugin needed but it doesn't works (same version of the plugin enabled)
         if [[ -x "$(which google-chrome)" ]] ; then
