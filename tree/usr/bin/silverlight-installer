@@ -53,7 +53,7 @@ main(){
             # cleanups
             rm -rf "$HOME/.wine-pipelight"
 
-            $guitool --info --text="$( eval_gettext "This plugin is compatible only with the Firefox browser and will not work with other browsers such as Chrome." )"
+            $guitool --info --text="$( eval_gettext "This plugin is compatible only with the Firefox browser and probably will not work with other browsers such as Chrome." )"
 
             if gksu elive-extra-silverlight ; then
                 # launch iceweasel to complete install
@@ -78,9 +78,9 @@ main(){
                 # activate netflix too
                 if $guitool --question --text="$( eval_gettext "Would you like to enable additional support for Netflix?" )" ; then
 
-                    $guitool --info --text="$( eval_gettext "It appears Netflix does not support Linux. To bypass this, you need to change your \"user-agent\" to make it believe you are using Windows. We can do this via a Firefox extension. Rest assured, this is both safe and legal." )"
+                    $guitool --info --text="$( eval_gettext "It appears Netflix does not support Linux. To bypass this, you need to change your \"user-agent\" to make it believe you are using Windows. We can do this via a Firefox extension. Rest assured, this is both safe." )"
 
-                    $guitool --info --text="$( eval_gettext "After installing the addon, select a Microsoft Windows user agent from the top-right bar plugin selector. For example, Firefox on Microsoft Windows." )"
+                    $guitool --info --text="$( eval_gettext "After installing the add-on, select the Microsoft Windows user agent from the top-right bar plugin selector. For example, Firefox on Microsoft Windows." )"
 
                     #iceweasel "http://www.google.com/search?q=%22user+agent+overrider%22+firefox+addon"
                     #firefox "https://addons.mozilla.org/es/firefox/addon/user-agent-overrider/versions/?page=1#version-0.2.5.1-signed"
@@ -98,7 +98,7 @@ main(){
 
                 el_request_donation
             else
-                $guitool --error --text="$( eval_gettext "An issue occurred during the installation of Silverlight, preventing us from completing the setup." )"
+                $guitool --error --text="$( eval_gettext "An issue occurred during the installation of Silverlight, preventing from completing the setup." )"
             fi
         fi
     fi
